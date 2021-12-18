@@ -17,5 +17,9 @@
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/primary</item>
+
+        <!-- No Title & Status Bar-->
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>

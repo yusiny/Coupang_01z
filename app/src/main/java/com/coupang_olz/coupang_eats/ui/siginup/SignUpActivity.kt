@@ -7,7 +7,7 @@ import com.coupang_olz.coupang_eats.ui.BaseActivity
 class SignUpActivity: BaseActivity<ActivitySignupBinding>(ActivitySignupBinding::inflate), View.OnClickListener {
 
     override fun initAfterBinding() {
-        binding.signUpBackIv.setOnClickListener(this)
+        binding.signUpBackIv.setOnClickListener { finish() }
         binding.signUpSignUpBtn.setOnClickListener(this)
     }
 

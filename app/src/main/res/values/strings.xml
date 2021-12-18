@@ -33,4 +33,7 @@
     <string name="signup_name_hint">이름</string>
     <string name="signup_password_hint">비밀번호</string>
     <string name="signup_password_confirm_hint">비밀번호 확인</string>
+    <string name="signup_agree_detail">
+        동의에는 필수 및 선택 목적(광고성 정보 수신 포함)에 대한 동의가 포함되어 있으며, 선택 목적의 동의를 거부하시는 경우에도 서비스 이용이 가능합니다.
+    </string>
 </resources>
