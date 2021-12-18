@@ -1,5 +1,8 @@
 package com.coupang_olz.coupang_eats.ui.main
 
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -18,4 +21,22 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         binding.mainBottomNavigation.setupWithNavController(navController)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    //액션버튼 클릭 했을 때
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item?.itemId){
+            R.id.menu_toolbar_search -> {
+                //검색 버튼 눌렀을 때
+                Toast.makeText(applicationContext, "검색 실행", Toast.LENGTH_LONG).show()
+                return super.onOptionsItemSelected(item)
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
 }
