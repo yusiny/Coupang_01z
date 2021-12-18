@@ -5,8 +5,11 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.coupang_olz.coupang_eats.R
+import com.coupang_olz.coupang_eats.data.local.Menu
 import com.coupang_olz.coupang_eats.databinding.FragmentHomeBinding
 import com.coupang_olz.coupang_eats.ui.BaseFragment
 import com.coupang_olz.coupang_eats.ui.main.MainActivity
@@ -24,6 +27,21 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
     override fun initAfterBinding() {
         initTB()
         initVP()
+
+        val menuRVAdpater = HomeMenuRVAdpater()
+        binding.homeMenuRv.adapter = menuRVAdpater
+        binding.homeMenuRv.layoutManager = GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
+        val menu = Menu("치킨", R.drawable.menu_exp)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
+        menuRVAdpater.addMenu(menu)
     }
 
     private fun initTB() {
