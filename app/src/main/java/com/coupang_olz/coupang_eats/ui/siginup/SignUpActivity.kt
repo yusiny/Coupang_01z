@@ -38,7 +38,10 @@ class SignUpActivity: BaseActivity<ActivitySignupBinding>(ActivitySignupBinding:
             Toast.makeText(this, "휴대폰 번호를 입력해 주세요.", Toast.LENGTH_SHORT).show()
             return
         }
-
+        if(!binding.signUpAgreeCheckboxCb.isChecked){
+            Toast.makeText(this, "약관에 동의해 주세요.", Toast.LENGTH_SHORT).show()
+            return
+        }
         val authService = AuthService()
         authService.setSignUpView(this)
         authService.signUp(getUser())
@@ -69,7 +72,7 @@ class SignUpActivity: BaseActivity<ActivitySignupBinding>(ActivitySignupBinding:
         //로딩바 GONE
 
         when(code){
-            2015, 2016, 2017 -> {
+            4000, 2016, 2017 -> {
                 binding.signUpIdErrorTv.visibility = View.VISIBLE
                 binding.signUpIdErrorTv.text = message
             }

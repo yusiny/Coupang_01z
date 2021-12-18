@@ -52,6 +52,7 @@ class AuthService {
 
                 signUpView.onSignUpFailure(4000, "데이터베이스 연결에 실패하였습니다.")
                 signUpView.onSignUpFailure(2017, "중복된 이메일입니다.")
+                signUpView.onSignUpFailure(2016, "이메일 형식을 확인해주세요.")
             }
 
         })
