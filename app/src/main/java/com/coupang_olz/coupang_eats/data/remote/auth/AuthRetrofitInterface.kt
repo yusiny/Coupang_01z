@@ -2,10 +2,7 @@ package com.coupang_olz.coupang_eats.data.remote.auth
 
 import com.coupang_olz.coupang_eats.data.local.User
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AuthRetrofitInterface {
     @POST("users/sign-up")
@@ -18,4 +15,7 @@ interface AuthRetrofitInterface {
     fun autoLogin(
         @Header ("X-ACCESS-TOKEN") jwt: String
     ): Call<AuthResponse>*/
+
+    @GET("users/{userIdx}")
+    fun getLogin(@Path("userIdx") userIdx: Int): Call<UserResponse>
 }

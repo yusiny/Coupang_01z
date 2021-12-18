@@ -10,6 +10,7 @@ import com.coupang_olz.coupang_eats.databinding.ActivityLoginBinding
 import com.coupang_olz.coupang_eats.ui.BaseActivity
 import com.coupang_olz.coupang_eats.ui.main.MainActivity
 import com.coupang_olz.coupang_eats.utils.saveJwt
+import com.coupang_olz.coupang_eats.utils.saveUserIdx
 import com.coupang_olz.coupang_eats.utils.setLoginStatus
 
 class LoginActivity: BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate),LoginView, View.OnClickListener {
@@ -57,6 +58,7 @@ class LoginActivity: BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::in
     override fun onLoginSuccess(auth: Auth) {
         //jwt저장과 로그인 상태 저장
         saveJwt(auth.jwt)
+        saveUserIdx(this, auth.userIdx)
         setLoginStatus(this, true)
 
         //mainActivity 시작

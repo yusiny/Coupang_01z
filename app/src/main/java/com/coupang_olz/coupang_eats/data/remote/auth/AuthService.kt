@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import com.coupang_olz.coupang_eats.data.local.User
 import com.coupang_olz.coupang_eats.ui.login.LoginView
+import com.coupang_olz.coupang_eats.ui.main.myeats.MyeatsView
 import com.coupang_olz.coupang_eats.ui.siginup.SignUpView
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,6 +16,7 @@ class AuthService {
     private lateinit var signUpView: SignUpView
     private lateinit var loginView: LoginView
     /*private lateinit var splashView: SplashView*/
+    private lateinit var myeatsView: MyeatsView
 
     fun setSignUpView(signUpView: SignUpView){
         this.signUpView = signUpView
@@ -22,6 +24,10 @@ class AuthService {
 
      fun setLoginView(loginView: LoginView){
         this.loginView = loginView
+    }
+
+    fun setMyeatsView(myeatsView: MyeatsView){
+        this.myeatsView = myeatsView
     }
 
  /*   fun setSplashView(splashView: SplashView){
@@ -88,6 +94,36 @@ class AuthService {
 
         })
         Log.d("LOGINACT/ASYNC", "hello")
+    }
+
+    fun SetUser(userIdx: Int){
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        myeatsView.onSetUserLoading()
+
+        authService.getLogin(userIdx).enqueue(object : Callback<UserResponse> {
+            @SuppressLint("LongLogTag")
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                Log.d("MYEATS/API-RESPONSE", response.toString())
+
+                val resp = response.body()!!
+
+                Log.d("MYEATS/API-RESPONSE-COU", resp.toString())
+
+                when(resp.code){
+                    1000 -> myeatsView.onSetUserSuccess(resp.result!!)
+                    else -> myeatsView.onSetUserFailure(resp.code, resp.message)
+                }
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Log.d("MYEATS/API-ERROR", t.message.toString())
+
+                myeatsView.onSetUserFailure(4000, "네트워크 오류가 발생했습니다.")
+            }
+
+        })
+        Log.d("MYEATS/ASYNC", "hello")
     }
 /*
     fun autoLogIn(jwt: String){
