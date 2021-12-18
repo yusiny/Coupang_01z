@@ -18,20 +18,24 @@
         <entry key="..\:/Users/kysle/Template_Basic/app/src/main/res/layout/activity_splash.xml" value="0.21197916666666666" />
         <entry key="..\:/Users/kysle/Template_Basic/app/src/main/res/layout/fragment_home.xml" value="0.21197916666666666" />
         <entry key="..\:/Users/kysle/Template_Basic/app/src/main/res/menu/navi_menu.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/drawable/border.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/drawable/box_black.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/drawable/box_grayline.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/drawable/selector_navi_heart.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/drawable/selector_navi_icon_color.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/activity_signup.xml" value="0.4" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_banner.xml" value="0.264" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_heart.xml" value="0.23802083333333332" />
-        <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_home.xml" value="0.24897750511247443" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_match.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_myeats.xml" value="0.264" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_mypage.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_order.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/fragment_search.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/item_home_menu.xml" value="0.264" />
+        <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/item_home_tasty.xml" value="0.264" />
+        <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/layout/item_tasty.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/menu/navi_menu.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/kysle/coupang_eats/app/src/main/res/menu/toolbar_menu.xml" value="0.24947916666666667" />
       </map>
