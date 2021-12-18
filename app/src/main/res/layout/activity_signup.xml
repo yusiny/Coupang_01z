@@ -63,7 +63,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="20dp"
         android:columnCount="3"
-        android:rowCount="1"
+        android:rowCount="2"
         app:layout_constraintTop_toBottomOf="@id/sign_up_info_text_tv"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/border"
@@ -81,6 +81,7 @@
             />
 
         <EditText
+            android:id="@+id/sign_up_id_edittext_et"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_column="1"
@@ -92,8 +93,21 @@
             android:textSize="16sp"
             android:paddingStart="10dp"
             />
-
     </GridLayout>
+    <TextView
+        android:id="@+id/sign_up_id_error_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잘못된 이메일입니다."
+        android:textColor="#FF0000"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toTopOf="@id/sign_up_id_et"
+        app:layout_constraintBottom_toBottomOf="@id/sign_up_id_et"
+        app:layout_constraintEnd_toEndOf="@id/sign_up_id_et"
+        android:visibility="gone"
+        />
+
     <GridLayout
         android:id="@+id/sign_up_pw_et"
         android:layout_width="375dp"
@@ -120,6 +134,7 @@
             />
 
         <EditText
+            android:id="@+id/sign_up_pw_edittext_et"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_column="1"
@@ -159,6 +174,7 @@
             />
 
         <EditText
+            android:id="@+id/sign_up_name_edittext_et"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_column="1"
@@ -198,6 +214,7 @@
             />
 
         <EditText
+            android:id="@+id/sign_up_phone_edittext_et"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_column="1"
@@ -237,10 +254,12 @@
         app:layout_constraintStart_toStartOf="parent" />
     <CheckBox
         android:id="@+id/sign_up_agree_checkbox_cb"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/checkbox"
         app:layout_constraintTop_toBottomOf="@id/sign_up_info_agree_tv"
         app:layout_constraintStart_toStartOf="parent" />
     <TextView
