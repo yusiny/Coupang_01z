@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
 import com.coupang_olz.coupang_eats.data.local.User
+import com.coupang_olz.coupang_eats.ui.login.LoginView
 import com.coupang_olz.coupang_eats.ui.siginup.SignUpView
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,16 +13,16 @@ import kotlin.math.sign
 
 class AuthService {
     private lateinit var signUpView: SignUpView
-/*    private lateinit var loginView: LoginView
-    private lateinit var splashView: SplashView*/
+    private lateinit var loginView: LoginView
+    /*private lateinit var splashView: SplashView*/
 
     fun setSignUpView(signUpView: SignUpView){
         this.signUpView = signUpView
     }
 
- /*   fun setLoginView(loginView: LoginView){
+     fun setLoginView(loginView: LoginView){
         this.loginView = loginView
-    }*/
+    }
 
  /*   fun setSplashView(splashView: SplashView){
         this.splashView = splashView
@@ -59,7 +60,7 @@ class AuthService {
         Log.d("SIGNUPACT/ASYNC", "hello")
     }
 
-/*    fun login(user: User){
+    fun login(user: User){
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
         loginView.onLoginLoading()
@@ -88,7 +89,7 @@ class AuthService {
         })
         Log.d("LOGINACT/ASYNC", "hello")
     }
-
+/*
     fun autoLogIn(jwt: String){
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 

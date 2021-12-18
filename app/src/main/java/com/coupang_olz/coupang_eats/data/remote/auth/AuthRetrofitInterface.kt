@@ -10,11 +10,11 @@ import retrofit2.http.POST
 interface AuthRetrofitInterface {
     @POST("users/sign-up")
     fun signUp(@Body user: User): Call<AuthResponse>
-/*
-    @POST("/users/login")
+
+    @POST("users/log-in")
     fun login(@Body user: User): Call<AuthResponse>
 
-    @GET("/users/auto-login")
+    /*@GET("/users/auto-login")
     fun autoLogin(
         @Header ("X-ACCESS-TOKEN") jwt: String
     ): Call<AuthResponse>*/
