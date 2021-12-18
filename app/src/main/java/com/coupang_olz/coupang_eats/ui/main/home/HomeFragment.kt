@@ -31,17 +31,26 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
         initVP()
 
         initMenuRV()
+        initStoreRV()
+    }
 
+    override fun onPause() {
+        super.onPause()
+
+        autopager.interrupt()
+    }
+
+    private fun initStoreRV() {
         val storeRVAdapter = HomeTastyRVAdapter()
         binding.homeTastyRv.adapter = storeRVAdapter
-        binding.homeTastyRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.homeTastyRv.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val store = Store("크로플각 성남점")
         storeRVAdapter.addStore(store)
         storeRVAdapter.addStore(store)
         storeRVAdapter.addStore(store)
         storeRVAdapter.addStore(store)
         storeRVAdapter.addStore(store)
-
     }
 
     private fun initMenuRV() {
@@ -69,6 +78,10 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
         activity.setSupportActionBar(toolbar)
         val ab = activity.supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
+
+        binding.homeToolbarSearchIv.setOnClickListener {
+            (context as MainActivity).navController.navigate(R.id.searchFragment)
+        }
     }
 
     private fun initVP() {
