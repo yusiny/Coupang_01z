@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:title="@string/menu_home"
+        android:icon="@drawable/selector_navi_home"/>
+    <item
+        android:id="@+id/searchFragment"
+        android:enabled="true"
+        android:title="@string/menu_search"
+        android:icon="@drawable/selector_navi_search"/>
+    <item
+        android:id="@+id/heartFragment"
+        android:enabled="true"
+        android:title="@string/menu_heart"
+        android:icon="@drawable/selector_navi_heart"/>
+    <item
+        android:id="@+id/orderFragment"
+        android:enabled="true"
+        android:title="@string/menu_order"
+        android:icon="@drawable/selector_navi_order"/>
+    <item
+        android:id="@+id/myeatsFragment"
+        android:enabled="true"
+        android:title="@string/menu_myeats"
+        android:icon="@drawable/selector_navi_mypage"/>
+</menu>
