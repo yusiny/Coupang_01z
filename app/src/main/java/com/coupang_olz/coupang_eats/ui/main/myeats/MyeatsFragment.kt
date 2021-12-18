@@ -25,7 +25,7 @@ class MyeatsFragment(): BaseFragment<FragmentMyeatsBinding>(FragmentMyeatsBindin
         }
         binding.myeatsLogoutTv.setOnClickListener {
             setLoginStatus(requireContext(), false)
-            startActivity(Intent(activity, LoginActivity::class.java))
+
         }
 
         val isLogin = isLogin(requireContext()!!)

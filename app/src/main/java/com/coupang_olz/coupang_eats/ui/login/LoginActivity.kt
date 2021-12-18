@@ -70,9 +70,9 @@ class LoginActivity: BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::in
 
     override fun onLoginFailure(code: Int, message: String) {
         when(code){
-            2015, 2019, 3014 -> {
-//                binding.loginErrorTv.visibility = View.VISIBLE
-//                binding.loginErrorTv.text = message
+            2015, 2016, 3014, 5001 -> {
+                binding.signInErrorTv.visibility = View.VISIBLE
+                binding.signInErrorTv.text = message
             }
         }
     }
