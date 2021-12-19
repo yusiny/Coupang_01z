@@ -121,6 +121,16 @@
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
+                        <TextView
+                            android:id="@+id/home_tasty_menu_reset_cnt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textColor="@color/secondary"
+                            android:textSize="14sp"
+                            android:layout_marginStart="5dp"
+                            android:visibility="gone"/>
+
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/home_tasty_menu_chochun"
@@ -159,6 +169,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
+                            android:id="@+id/home_tasty_menu_cheetah_iv"
                             android:layout_width="15dp"
                             android:layout_height="15dp"
                             android:layout_gravity="center"
@@ -166,6 +177,7 @@
                             android:src="@drawable/icon_reset" />
 
                         <TextView
+                            android:id="@+id/home_tasty_menu_cheetah_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="치타배달"
@@ -235,6 +247,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/home_tasty_menu_takeout_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="포장"
@@ -255,6 +268,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/home_tasty_menu_discount_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="할인쿠폰"
