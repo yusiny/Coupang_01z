@@ -10,14 +10,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.coupang_olz.coupang_eats.R
+import com.coupang_olz.coupang_eats.data.local.Category
 import com.coupang_olz.coupang_eats.data.local.Menu
 import com.coupang_olz.coupang_eats.data.local.Store
+import com.coupang_olz.coupang_eats.data.remote.category.CategoryService
 import com.coupang_olz.coupang_eats.databinding.FragmentHomeBinding
 import com.coupang_olz.coupang_eats.ui.BaseFragment
 import com.coupang_olz.coupang_eats.ui.main.MainActivity
 import com.coupang_olz.coupang_eats.ui.main.search.SearchFragment
 
-class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate), HomeCategoryView {
 
     private lateinit var autopager: AutoPager //메인배너를 위한 스레드
     private val handler = Handler(Looper.getMainLooper()){
@@ -25,6 +27,8 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
         true
     }
     var currentPosition:Int = 0
+    private lateinit var menuRVAdpater: HomeMenuRVAdpater
+
 
     override fun initAfterBinding() {
         initTB()
@@ -54,21 +58,14 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
     }
 
     private fun initMenuRV() {
-        val menuRVAdpater = HomeMenuRVAdpater()
+        menuRVAdpater = HomeMenuRVAdpater(requireContext())
         binding.homeMenuRv.adapter = menuRVAdpater
         binding.homeMenuRv.layoutManager =
             GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
-        val menu = Menu("치킨", R.drawable.menu_exp)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
-        menuRVAdpater.addMenu(menu)
+
+        val categoryService = CategoryService()
+        categoryService.setCategoryView(this)
+        categoryService.getCategories()
     }
 
     private fun initTB() {
@@ -116,6 +113,17 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
         }
     }
 
+    override fun onCategoryLoading() {
+
+    }
+
+    override fun onCategorySuccess(categories: ArrayList<Category>) {
+        menuRVAdpater.addCategories(categories)
+    }
+
+    override fun onCategoryFailure(code: Int, message: String) {
+
+    }
 
 
 }

@@ -1,14 +1,17 @@
 package com.coupang_olz.coupang_eats.ui.main.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.coupang_olz.coupang_eats.data.local.Category
 import com.coupang_olz.coupang_eats.data.local.Menu
 import com.coupang_olz.coupang_eats.databinding.ItemHomeMenuBinding
 
-class HomeMenuRVAdpater(): RecyclerView.Adapter<HomeMenuRVAdpater.ViewHolder>(){
-    private val menus = ArrayList<Menu>()
+class HomeMenuRVAdpater(val context: Context): RecyclerView.Adapter<HomeMenuRVAdpater.ViewHolder>(){
+    private val categories = ArrayList<Category>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemHomeMenuBinding = ItemHomeMenuBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
@@ -17,28 +20,28 @@ class HomeMenuRVAdpater(): RecyclerView.Adapter<HomeMenuRVAdpater.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(menus[position])
+        holder.bind(categories[position])
     }
 
-    override fun getItemCount(): Int = menus.size
+    override fun getItemCount(): Int = categories.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addAlbums(albums: ArrayList<Menu>) {
-        this.menus.clear()
-        this.menus.addAll(menus)
+    fun addCategories(categories: ArrayList<Category>) {
+        this.categories.clear()
+        this.categories.addAll(categories)
 
         notifyDataSetChanged()
     }
 
-    fun addMenu(menu: Menu) {
-        menus.add(menu)
-        notifyDataSetChanged()
-    }
 
     inner class ViewHolder(val binding: ItemHomeMenuBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(menu: Menu){
-            binding.itemHomeMenuImgIv.setImageResource(menu.img!!)
-            binding.itemHomeMenuTitleTv.text = menu.title
+        fun bind(category: Category){
+            if(category.categoryImg != null){
+                Glide.with(context).load(category.categoryImg!!).into(binding.itemHomeMenuImgIv)
+            }else{
+                Glide.with(context).load(category.categoryImg!!).into(binding.itemHomeMenuImgIv)
+            }
+            binding.itemHomeMenuTitleTv.text = category.categoryName
         }
     }
 }
