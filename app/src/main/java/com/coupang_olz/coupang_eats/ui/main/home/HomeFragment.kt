@@ -3,7 +3,9 @@ package com.coupang_olz.coupang_eats.ui.main.home
 import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,12 +15,13 @@ import com.coupang_olz.coupang_eats.data.local.Category
 import com.coupang_olz.coupang_eats.data.local.Option
 import com.coupang_olz.coupang_eats.data.local.Store
 import com.coupang_olz.coupang_eats.data.remote.category.CategoryService
+import com.coupang_olz.coupang_eats.data.remote.store.StoreService
 import com.coupang_olz.coupang_eats.databinding.FragmentHomeBinding
 import com.coupang_olz.coupang_eats.ui.BaseFragment
 import com.coupang_olz.coupang_eats.ui.main.MainActivity
 
 
-class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate), HomeCategoryView {
+class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate), HomeCategoryView, HomeStoreView {
 
     private lateinit var autopager: AutoPager //메인배너를 위한 스레드
     private val handler = Handler(Looper.getMainLooper()){
@@ -27,7 +30,7 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
     }
     var currentPosition:Int = 0
     private lateinit var menuRVAdpater: HomeMenuRVAdpater
-
+    private lateinit var storeRVAdapter: HomeTastyRVAdapter
     //store 검색 시, 활용할 option 정보
     private var option = Option()
     private var optionCnt = 0
@@ -35,33 +38,50 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
     private var isDiscount = false
 
     override fun initAfterBinding() {
+        //상단 툴바와 배너 뷰페이저
         initTB()
         initVP()
 
+        //카테고리 api 연결 -> RV
         initMenuRV()
+
+        //스토어 부분 option
+        initOptionListener()
+        //스토어 api 연결 -> RV
         initStoreRV()
 
+
+    }
+
+    private fun initOptionListener() {
         //버튼 이벤트 리스너 달아서 상태 변환
         binding.homeTastyMenuReset.setOnClickListener {
             binding.homeTastyMenuReset.visibility = View.GONE
             binding.homeTastyMenuResetCnt.visibility = View.GONE
 
-            if(option.isCheeth == "true"){setIsCheetah("true")}
-            if(isTakeOut){setIsTakeOut()}
-            if(isDiscount){setIsDiscount()}
+            if (option.isCheeth == "true") {
+                setIsCheetah("true")
+            }
+            if (isTakeOut) {
+                setIsTakeOut()
+            }
+            if (isDiscount) {
+                setIsDiscount()
+            }
 
             optionCnt = 0
         }
         binding.homeTastyMenuCheetah.setOnClickListener {
-           setIsCheetah(option.isCheeth)
+            setIsCheetah(option.isCheeth)
         }
         binding.homeTastyMenuTakeout.setOnClickListener {
             setIsTakeOut()
         }
-        binding.homeTastyMenuDiscount.setOnClickListener{
-           setIsDiscount()
+        binding.homeTastyMenuDiscount.setOnClickListener {
+            setIsDiscount()
         }
     }
+
     private fun setIsCheetah(isCheetah: String){
         if(isCheetah == "true"){
             option.isCheeth = "false"
@@ -126,16 +146,14 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
     }
 
     private fun initStoreRV() {
-        val storeRVAdapter = HomeTastyRVAdapter()
+        storeRVAdapter = HomeTastyRVAdapter(requireContext())
         binding.homeTastyRv.adapter = storeRVAdapter
         binding.homeTastyRv.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        val store = Store("크로플각 성남점")
-        storeRVAdapter.addStore(store)
-        storeRVAdapter.addStore(store)
-        storeRVAdapter.addStore(store)
-        storeRVAdapter.addStore(store)
-        storeRVAdapter.addStore(store)
+
+        val storeService = StoreService()
+        storeService.setStoreView(this)
+        storeService.getStores()
     }
 
     private fun initMenuRV() {
@@ -201,6 +219,17 @@ class HomeFragment(): BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
     }
 
     override fun onCategoryFailure(code: Int, message: String) {
+    }
+
+    override fun onStoreLoading() {}
+
+    override fun onStoreSucess(stores: ArrayList<Store>) {
+        storeRVAdapter.addStores(stores)
+    }
+
+    override fun onStoreFailure(code: Int, message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
+        Log.d("HOMRFRG-STORE", message)
 
     }
 

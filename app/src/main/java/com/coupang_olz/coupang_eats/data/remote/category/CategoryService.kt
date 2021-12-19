@@ -2,7 +2,6 @@ package com.coupang_olz.coupang_eats.data.remote.category
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.coupang_olz.coupang_eats.data.local.Category
 import com.coupang_olz.coupang_eats.data.local.category.CategoryResponse
 import com.coupang_olz.coupang_eats.data.remote.auth.getRetrofit
 import com.coupang_olz.coupang_eats.ui.main.home.HomeCategoryView
